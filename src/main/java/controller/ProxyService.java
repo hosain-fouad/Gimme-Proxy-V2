@@ -24,7 +24,7 @@ public class ProxyService {
     @RequestMapping("/getRandomHttpProxy")
     public MyProxyServer getRandomHttpProxy(){
         List<MyProxyServer> proxyServers = proxyDAO.getAllProxies().stream().filter(proxy -> proxy.getProtocol().equalsIgnoreCase("HTTP")).collect(Collectors.toList());
-        return proxyServers.get((new Random(proxyServers.size()).nextInt()));
+        return proxyServers.get((new Random().nextInt(proxyServers.size())));
     }
 
 
