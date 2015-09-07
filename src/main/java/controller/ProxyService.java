@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class SimpleCrawlerService {
+public class ProxyService {
 
     @Autowired
     private ProxyDAO proxyDAO;
@@ -18,5 +18,12 @@ public class SimpleCrawlerService {
     public List<MyProxyServer> getProxies(){
     	return proxyDAO.getAllProxies();
     }
+
+    @RequestMapping("/getRandomHttpProxy")
+    public MyProxyServer getRandomHttpProxy(){
+        List<MyProxyServer> proxyServers = proxyDAO.getAllProxies();
+        return proxyServers.stream().filter(proxy -> proxy.getProtocol().equalsIgnoreCase("HTTP")).findAny().get();
+    }
+
 
 }

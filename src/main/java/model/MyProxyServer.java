@@ -33,7 +33,7 @@ public class MyProxyServer {
     }
 
     @Id
-    @Column(name = "proxyId", unique = true, nullable = false)
+    @Column(name = "proxy_id", unique = true, nullable = false)
     public String getId() {
         return ip+":"+port;
     }
@@ -51,7 +51,7 @@ public class MyProxyServer {
         this.country = country;
     }
 
-    @Column(name = "ipNumber")
+    @Column(name = "ip_address")
     public String getIp() {
         return ip;
     }
@@ -60,7 +60,7 @@ public class MyProxyServer {
         this.ip = ip;
     }
 
-    @Column(name = "portNumber")
+    @Column(name = "port_number")
     public int getPort() {
         return port;
     }
@@ -87,7 +87,7 @@ public class MyProxyServer {
         this.speed = speed;
     }
 
-    @Column(name = "lastUpdated")
+    @Column(name = "last_updated")
     public Date getLastUpdated() {
         return lastUpdated;
     }
