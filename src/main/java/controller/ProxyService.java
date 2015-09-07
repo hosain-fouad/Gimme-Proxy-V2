@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 @RestController
 public class ProxyService {
@@ -21,8 +23,8 @@ public class ProxyService {
 
     @RequestMapping("/getRandomHttpProxy")
     public MyProxyServer getRandomHttpProxy(){
-        List<MyProxyServer> proxyServers = proxyDAO.getAllProxies();
-        return proxyServers.stream().filter(proxy -> proxy.getProtocol().equalsIgnoreCase("HTTP")).findAny().get();
+        List<MyProxyServer> proxyServers = proxyDAO.getAllProxies().stream().filter(proxy -> proxy.getProtocol().equalsIgnoreCase("HTTP")).collect(Collectors.toList());
+        return proxyServers.get((new Random(proxyServers.size()).nextInt()));
     }
 
 
