@@ -16,11 +16,13 @@ public class ProxyService {
 
     @RequestMapping("/getProxies")
     public List<MyProxyServer> getProxies(){
+        System.out.println("getProxies service call;");
     	return proxyDAO.getAllProxies();
     }
 
     @RequestMapping("/getRandomHttpProxy")
     public MyProxyServer getRandomHttpProxy(){
+        System.out.println("getProxies service call;");
         List<MyProxyServer> proxyServers = proxyDAO.getAllProxies();
         return proxyServers.stream().filter(proxy -> proxy.getProtocol().equalsIgnoreCase("HTTP")).findAny().get();
     }

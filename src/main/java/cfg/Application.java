@@ -28,6 +28,7 @@ public class Application {
 
     public static void main(String[] args) {
         propertyFetcher.loadProperties();
+        System.out.println(propertyFetcher);
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
         ((Thread)ctx.getBean("proxyGeneratorEngine")).start();
         ((Thread)ctx.getBean("proxyCleanerEngine")).start();
